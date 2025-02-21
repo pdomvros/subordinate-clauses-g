@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Διαδραστικές Δραστηριότητες Προτάσεων</title>
+    <style>
+        body { 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            text-align: center; 
+            background-color: black; 
+            color: gold; 
+        }
+        .container { 
+            width: 80%; 
+            margin: auto; 
+        }
+        h2, h3 { 
+            color: gold; 
+            font-size: 24px; 
+            text-shadow: 2px 2px 4px #ffcc00; 
+        }
+        .question { 
+            font-size: 18px; 
+            margin: 10px 0; 
+            color: #ffcc00; 
+        }
+        .options button { 
+            margin: 5px; 
+            padding: 10px; 
+            cursor: pointer; 
+            background-color: #ffcc00; 
+            border: none; 
+            border-radius: 5px; 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            font-size: 16px; 
+        }
+        .drag-container { 
+            display: flex; 
+            justify-content: space-around; 
+            margin-top: 20px; 
+        }
+        .drop-zone { 
+            border: 2px dashed #ffcc00; 
+            padding: 20px; 
+            width: 200px; 
+            min-height: 50px; 
+            color: #ffcc00; 
+        }
+        .draggable { 
+            padding: 10px; 
+            margin: 5px; 
+            background: #ffcc00; 
+            cursor: grab; 
+            display: inline-block; 
+            border-radius: 5px; 
+            color: black; 
+        }
+        .correct { 
+            background-color: #00ff00; /* Έντονο πράσινο */
+            color: black;
+        }
+        .incorrect { 
+            background-color: #ff0000; /* Έντονο κόκκινο */
+            color: white;
+        }
+        .hidden { 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Διαδραστικές Δραστηριότητες για τις Προτάσεις 😊📚</h2>
+        <p><strong>Δημιουργία: Παναγιώτης Δόμβρος 2025 (CC BY-NC)</strong></p>
 
+        <!-- Αναφορικές Προτάσεις (Drag & Drop) -->
+        <h3>Αναφορικές Προτάσεις: Αντιστοίχιση 🧩</h3>
+        <div class="drag-container">
+            <div>
+                <div class="draggable" draggable="true" id="drag1">που διάβασες</div>
+                <div class="draggable" draggable="true" id="drag2">που γνώρισες</div>
+                <div class="draggable" draggable="true" id="drag3">που έγραψε</div>
+                <div class="draggable" draggable="true" id="drag4">που αγόρασες</div>
+                <div class="draggable" draggable="true" id="drag5">που έκανες</div>
+                <div class="draggable" draggable="true" id="drag6">που είδες</div>
+                <div class="draggable" draggable="true" id="drag7">που άκουσες</div>
+                <div class="draggable" draggable="true" id="drag8">που βρήκες</div>
+                <div class="draggable" draggable="true" id="drag9">που επισκέφτηκες</div>
+                <div class="draggable" draggable="true" id="drag10">που διάλεξες</div>
+                <div class="draggable" draggable="true" id="drag11">που έφτιαξες</div>
+                <div class="draggable" draggable="true" id="drag12">που έδειξες</div>
+                <div class="draggable" draggable="true" id="drag13">που έλυσες</div>
+                <div class="draggable" draggable="true" id="drag14">που έκλεισες</div>
+                <div class="draggable" draggable="true" id="drag15">που έδωσες</div>
+            </div>
+            <div>
+                <div class="drop-zone" id="drop1" data-answer="drag1">Το βιβλίο _______ είναι πολύ ενδιαφέρον.</div>
+                <div class="drop-zone hidden" id="drop2" data-answer="drag2">Ο άνθρωπος _______ είναι εξαιρετικός.</div>
+                <div class="drop-zone hidden" id="drop3" data-answer="drag3">Η ιστορία _______ είναι συγκινητική.</div>
+                <div class="drop-zone hidden" id="drop4" data-answer="drag4">Το αυτοκίνητο _______ είναι γρήγορο.</div>
+                <div class="drop-zone hidden" id="drop5" data-answer="drag5">Το έργο _______ είναι εντυπωσιακό.</div>
+                <div class="drop-zone hidden" id="drop6" data-answer="drag6">Η ταινία _______ είναι αστεία.</div>
+                <div class="drop-zone hidden" id="drop7" data-answer="drag7">Η μουσική _______ είναι ηρεμιστική.</div>
+                <div class="drop-zone hidden" id="drop8" data-answer="drag8">Το δώρο _______ είναι υπέροχο.</div>
+                <div class="drop-zone hidden" id="drop9" data-answer="drag9">Η πόλη _______ είναι μαγευτική.</div>
+                <div class="drop-zone hidden" id="drop10" data-answer="drag10">Το φαγητό _______ είναι νόστιμο.</div>
+                <div class="drop-zone hidden" id="drop11" data-answer="drag11">Το σπίτι _______ είναι άνετο.</div>
+                <div class="drop-zone hidden" id="drop12" data-answer="drag12">Η εικόνα _______ είναι όμορφη.</div>
+                <div class="drop-zone hidden" id="drop13" data-answer="drag13">Το πρόβλημα _______ είναι δύσκολο.</div>
+                <div class="drop-zone hidden" id="drop14" data-answer="drag14">Η πόρτα _______ είναι ανοιχτή.</div>
+                <div class="drop-zone hidden" id="drop15" data-answer="drag15">Το βιβλίο _______ είναι δικό σου.</div>
+            </div>
+        </div>
+
+        <!-- Τελικές Προτάσεις -->
+        <h3>Τελικές Προτάσεις: Συμπλήρωση 🎯</h3>
+        <div class="drag-container">
+            <div>
+                <div class="draggable" draggable="true" id="drag16">για να πετύχει</div>
+                <div class="draggable" draggable="true" id="drag17">ώστε να βελτιώσει την απόδοσή του</div>
+                <div class="draggable" draggable="true" id="drag18">για να μην αργήσει</div>
+                <div class="draggable" draggable="true" id="drag19">για να περάσει τις εξετάσεις</div>
+                <div class="draggable" draggable="true" id="drag20">για να μαζέψει χρήματα</div>
+                <div class="draggable" draggable="true" id="drag21">για να προστατεύσει την υγεία του</div>
+                <div class="draggable" draggable="true" id="drag22">για να βρει καλύτερη δουλειά</div>
+                <div class="draggable" draggable="true" id="drag23">για να μην κρυώνει</div>
+                <div class="draggable" draggable="true" id="drag24">για να μην ανησυχούν οι γονείς του</div>
+                <div class="draggable" draggable="true" id="drag25">για να φτάσει γρήγορα στο αεροδρόμιο</div>
+                <div class="draggable" draggable="true" id="drag26">για να δει τι έχει</div>
+                <div class="draggable" draggable="true" id="drag27">για να κοιμηθεί καλύτερα</div>
+                <div class="draggable" draggable="true" id="drag28">για να μπει φρέσκος αέρας</div>
+                <div class="draggable" draggable="true" id="drag29">για να δοκιμάσει το νέο σύστημα</div>
+                <div class="draggable" draggable="true" id="drag30">για να βελτιωθεί στη μουσική</div>
+            </div>
+            <div>
+                <div class="drop-zone" id="drop16" data-answer="drag16">Δούλεψε σκληρά _______.</div>
+                <div class="drop-zone hidden" id="drop17" data-answer="drag17">Έκανε επιπλέον μαθήματα _______.</div>
+                <div class="drop-zone hidden" id="drop18" data-answer="drag18">Ξύπνησε νωρίς _______.</div>
+                <div class="drop-zone hidden" id="drop19" data-answer="drag19">Διάβασε πολύ _______.</div>
+                <div class="drop-zone hidden" id="drop20" data-answer="drag20">Δούλεψε υπερωρίες _______.</div>
+                <div class="drop-zone hidden" id="drop21" data-answer="drag21">Έκανε γυμναστική _______.</div>
+                <div class="drop-zone hidden" id="drop22" data-answer="drag22">Σπούδασε ξένες γλώσσες _______.</div>
+                <div class="drop-zone hidden" id="drop23" data-answer="drag23">Κλείσε το παράθυρο _______.</div>
+                <div class="drop-zone hidden" id="drop24" data-answer="drag24">Άφησε σημείωμα _______.</div>
+                <div class="drop-zone hidden" id="drop25" data-answer="drag25">Φώναξε ταξί _______.</div>
+                <div class="drop-zone hidden" id="drop26" data-answer="drag26">Πήγε στο γιατρό _______.</div>
+                <div class="drop-zone hidden" id="drop27" data-answer="drag27">Έκλεισε το φως _______.</div>
+                <div class="drop-zone hidden" id="drop28" data-answer="drag28">Άνοιξε την πόρτα _______.</div>
+                <div class="drop-zone hidden" id="drop29" data-answer="drag29">Κατέβασε την εφαρμογή _______.</div>
+                <div class="drop-zone hidden" id="drop30" data-answer="drag30">Έκανε εξάσκηση καθημερινά _______.</div>
+            </div>
+        </div>
+
+        <!-- Αποτελεσματικές Προτάσεις -->
+        <h3>Αποτελεσματικές Προτάσεις: Επιλογή 🌟</h3>
+        <div class="question-container">
+            <div class="question">1. Η ταινία ήταν τόσο ενδιαφέρουσα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">ώστε όλοι την είδαν ξανά</button>
+                <button onclick="checkAnswer(this, false)">επειδή όλοι είχαν χρόνο</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">2. Έτρεξε τόσο γρήγορα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που κανείς δεν τον πρόλαβε</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν αργά</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">3. Διάβασε τόσο πολύ, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">ώστε πέρασε τις εξετάσεις με άριστα</button>
+                <button onclick="checkAnswer(this, false)">επειδή δεν είχε άλλη δουλειά</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">4. Η βροχή ήταν τόσο δυνατή, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που πλημμύρισαν οι δρόμοι</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν χειμώνας</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">5. Φώναξε τόσο δυνατά, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που τον άκουσαν όλοι</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν θυμωμένος</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">6. Ήταν τόσο κουρασμένος, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">ώστε αποκοιμήθηκε αμέσως</button>
+                <button onclick="checkAnswer(this, false)">επειδή δούλευε πολύ</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">7. Έκανε τόσο κρύο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που το νερό πάγωσε</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν χειμώνας</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">8. Ο ήλιος έλαμπε τόσο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">ώστε όλοι φορούσαν γυαλιά</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν καλοκαίρι</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">9. Μίλησε τόσο γρήγορα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που κανείς δεν κατάλαβε</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν νευρικός</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">10. Τα νέα ήταν τόσο σοκαριστικά, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που όλοι έμειναν άφωνοι</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν απρόσμενα</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">11. Ο δρόμος ήταν τόσο ολισθηρός, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που γλίστρησε</button>
+                <button onclick="checkAnswer(this, false)">επειδή έβρεχε</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">12. Η συναυλία ήταν τόσο καλή, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που το κοινό ενθουσιάστηκε</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν δωρεάν</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">13. Ο ήχος ήταν τόσο δυνατός, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που τα τζάμια έτρεμαν</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν συναυλία</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">14. Το παιδί ήταν τόσο κουρασμένο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που αποκοιμήθηκε στο τραπέζι</button>
+                <button onclick="checkAnswer(this, false)">επειδή έπαιξε πολύ</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">15. Η ταινία ήταν τόσο τρομακτική, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">που μερικοί έφυγαν από την αίθουσα</button>
+                <button onclick="checkAnswer(this, false)">επειδή ήταν νύχτα</button>
+            </div>
+        </div>
+
+        <!-- Εναντιωματικές Προτάσεις -->
+        <h3>Εναντιωματικές Προτάσεις: Quiz 🤔</h3>
+        <div class="question-container">
+            <div class="question">1. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Παρόλο που ήταν άρρωστος, πήγε στο σχολείο.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή ήταν άρρωστος, δεν πήγε στο σχολείο.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">2. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Μολονότι είχε χρόνο, δεν διάβασε.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή είχε χρόνο, διάβασε.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">3. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Παρόλο που έβρεχε, βγήκαμε βόλτα.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή έβρεχε, μείναμε σπίτι.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">4. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Ενώ ήταν κουρασμένος, συνέχισε να δουλεύει.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή ήταν κουρασμένος, σταμάτησε να δουλεύει.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">5. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Αν και πεινούσε, δεν έφαγε.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή πεινούσε, έφαγε.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">6. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Μολονότι είχε χρήματα, δεν αγόρασε τίποτα.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή είχε χρήματα, αγόρασε πολλά.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">7. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Παρότι έκανε κρύο, δεν φόρεσε μπουφάν.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή έκανε κρύο, φόρεσε μπουφάν.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">8. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Ενώ όλοι διασκέδαζαν, εκείνος ήταν σκεπτικός.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή όλοι διασκέδαζαν, εκείνος ήταν χαρούμενος.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">9. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Παρόλο που φοβόταν, ανέβηκε στη σκηνή.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή φοβόταν, δεν ανέβηκε στη σκηνή.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">10. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Αν και ήταν μικρός, είχε μεγάλη ευφυΐα.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή ήταν μικρός, δεν είχε ευφυΐα.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">11. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Ενώ είχαμε συμφωνήσει, άλλαξε γνώμη.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή συμφωνήσαμε, δεν άλλαξε γνώμη.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">12. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Μολονότι δεν ήξερε κολύμπι, βούτηξε στη θάλασσα.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή δεν ήξερε κολύμπι, δεν βούτηξε στη θάλασσα.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">13. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Αν και δεν είχε εμπειρία, τα κατάφερε.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή δεν είχε εμπειρία, δεν τα κατάφερε.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">14. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Παρότι είχε δίκιο, δεν επέμενε.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή είχε δίκιο, επέμενε.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">15. Ποια πρόταση εκφράζει εναντίωση;</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">Αν και ξυπνήσαμε νωρίς, αργήσαμε.</button>
+                <button onclick="checkAnswer(this, false)">Επειδή ξυπνήσαμε νωρίς, δεν αργήσαμε.</button>
+            </div>
+        </div>
+
+        <!-- Χρονικές Προτάσεις -->
+        <h3>Χρονικές Προτάσεις: Αντιστοίχιση ⏳</h3>
+        <div class="drag-container">
+            <div>
+                <div class="draggable" draggable="true" id="drag31">όταν έφτασε</div>
+                <div class="draggable" draggable="true" id="drag32">αφού τελείωσε</div>
+                <div class="draggable" draggable="true" id="drag33">πριν φύγει</div>
+                <div class="draggable" draggable="true" id="drag34">ενώ διάβαζε</div>
+                <div class="draggable" draggable="true" id="drag35">όταν ξημέρωσε</div>
+                <div class="draggable" draggable="true" id="drag36">όσο μιλούσε</div>
+                <div class="draggable" draggable="true" id="drag37">προτού μπει</div>
+                <div class="draggable" draggable="true" id="drag38">αφότου έφυγε</div>
+                <div class="draggable" draggable="true" id="drag39">ενώ κοιμόταν</div>
+                <div class="draggable" draggable="true" id="drag40">όταν τελείωσε</div>
+                <div class="draggable" draggable="true" id="drag41">μόλις έφτασε</div>
+                <div class="draggable" draggable="true" id="drag42">όποτε πηγαίνει</div>
+                <div class="draggable" draggable="true" id="drag43">ενώ έβρεχε</div>
+                <div class="draggable" draggable="true" id="drag44">αφού διάβασε</div>
+                <div class="draggable" draggable="true" id="drag45">όταν μιλούσε</div>
+            </div>
+            <div>
+                <div class="drop-zone" id="drop31" data-answer="drag31">Ξεκινήσαμε _______.</div>
+                <div class="drop-zone hidden" id="drop32" data-answer="drag32">Πήγε σπίτι _______ τη δουλειά.</div>
+                <div class="drop-zone hidden" id="drop33" data-answer="drag33">Έφυγε _______ από το γραφείο.</div>
+                <div class="drop-zone hidden" id="drop34" data-answer="drag34">Το τηλέφωνο χτύπησε _______.</div>
+                <div class="drop-zone hidden" id="drop35" data-answer="drag35">Ξεκινήσαμε το ταξίδι _______.</div>
+                <div class="drop-zone hidden" id="drop36" data-answer="drag36">Όλοι τον άκουγαν _______.</div>
+                <div class="drop-zone hidden" id="drop37" data-answer="drag37">Κοίταξε το ρολόι του _______.</div>
+                <div class="drop-zone hidden" id="drop38" data-answer="drag38">Μάζεψε το τραπέζι _______.</div>
+                <div class="drop-zone hidden" id="drop39" data-answer="drag39">Ακούστηκε ένας θόρυβος _______.</div>
+                <div class="drop-zone hidden" id="drop40" data-answer="drag40">Βγήκε για περπάτημα _______.</div>
+                <div class="drop-zone hidden" id="drop41" data-answer="drag41">Τον αγκάλιασε _______.</div>
+                <div class="drop-zone hidden" id="drop42" data-answer="drag42">Νιώθει χαρά _______.</div>
+                <div class="drop-zone hidden" id="drop43" data-answer="drag43">Μείναμε μέσα _______.</div>
+                <div class="drop-zone hidden" id="drop44" data-answer="drag44">Έβαλε τα κλάματα _______.</div>
+                <div class="drop-zone hidden" id="drop45" data-answer="drag45">Τον διέκοψαν _______.</div>
+            </div>
+        </div>
+
+        <!-- Υποθετικές Προτάσεις -->
+        <h3>Υποθετικές Προτάσεις: Τι θα γινόταν αν... 🤷‍♂️</h3>
+        <div class="question-container">
+            <div class="question">1. Αν διάβαζες περισσότερο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα είχες περάσει τις εξετάσεις.</button>
+                <button onclick="checkAnswer(this, false)">δε θα διάβαζες ποτέ ξανά.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">2. Αν κάνει κρύο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα φορέσω μπουφάν.</button>
+                <button onclick="checkAnswer(this, false)">θα βγω από το σπίτι.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">3. Αν είχε έρθει νωρίτερα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα μας έβρισκε εδώ.</button>
+                <button onclick="checkAnswer(this, false)">θα είχε χάσει το λεωφορείο.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">4. Αν είχε κερδίσει, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα ήταν χαρούμενος.</button>
+                <button onclick="checkAnswer(this, false)">δε θα είχε προσπαθήσει.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">5. Εφόσον δεν έχεις χρήματα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">δε μπορείς να αγοράσεις αυτό το αυτοκίνητο.</button>
+                <button onclick="checkAnswer(this, false)">θα τα βρεις κάπως.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">6. Άμα αργήσεις, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα χάσεις το λεωφορείο.</button>
+                <button onclick="checkAnswer(this, false)">δε θα σε περιμένουν.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">7. Αν δεν είχε βρέξει, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα είχαμε κάνει πικνίκ.</button>
+                <button onclick="checkAnswer(this, false)">δε θα είχαμε βγει.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">8. Σε περίπτωση που δε βρεις ταξί, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">πάρε με τηλέφωνο.</button>
+                <button onclick="checkAnswer(this, false)">θα φτάσεις έγκαιρα.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">9. Αν φας πολύ γρήγορα, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα σε πονέσει το στομάχι σου.</button>
+                <button onclick="checkAnswer(this, false)">δε θα χορτάσεις.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">10. Αν κοιμόμουν νωρίς, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">δε θα ήμουν τόσο κουρασμένος το πρωί.</button>
+                <button onclick="checkAnswer(this, false)">θα ξυπνούσα νωρίς.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">11. Αν έτρωγες λιγότερο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">δε θα πονούσε το στομάχι σου.</button>
+                <button onclick="checkAnswer(this, false)">θα χάσεις βάρος.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">12. Εάν δεν ήσουν εκεί, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">δε θα είχαμε σωθεί.</button>
+                <button onclick="checkAnswer(this, false)">θα είχαμε βρει άλλη λύση.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">13. Αν είχε δουλέψει περισσότερο, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα είχε πετύχει.</button>
+                <button onclick="checkAnswer(this, false)">δε θα ήταν κουρασμένος.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">14. Αν είχες πει την αλήθεια, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">δε θα υπήρχε πρόβλημα.</button>
+                <button onclick="checkAnswer(this, false)">θα σε είχαν καταλάβει.</button>
+            </div>
+        </div>
+        <div class="question-container hidden">
+            <div class="question">15. Σε περίπτωση που βρέχει, _______</div>
+            <div class="options">
+                <button onclick="checkAnswer(this, true)">θα ακυρώσουμε την εκδρομή.</button>
+                <button onclick="checkAnswer(this, false)">θα πάμε έτσι κι αλλιώς.</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Drag and Drop Functionality with Feedback
+        document.addEventListener("dragstart", function(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        });
+        
+        document.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+        
+        document.addEventListener("drop", function(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var dropZone = event.target;
+            if (dropZone.classList.contains("drop-zone")) {
+                if (dropZone.getAttribute("data-answer") === data) {
+                    dropZone.textContent = dropZone.textContent.replace("_______", document.getElementById(data).textContent);
+                    dropZone.classList.add("correct");
+                    showNextQuestion(dropZone);
+                } else {
+                    dropZone.classList.add("incorrect");
+                }
+                document.getElementById(data).style.display = "none";
+            }
+        });
+
+        function showNextQuestion(currentDropZone) {
+            var nextDropZone = currentDropZone.nextElementSibling;
+            if (nextDropZone && nextDropZone.classList.contains("drop-zone")) {
+                nextDropZone.classList.remove("hidden");
+            }
+        }
+
+        function checkAnswer(button, isCorrect) {
+            if (isCorrect) {
+                button.style.backgroundColor = "#00ff00"; // Έντονο πράσινο
+                var currentQuestionContainer = button.closest(".question-container");
+                var nextQuestionContainer = currentQuestionContainer.nextElementSibling;
+                if (nextQuestionContainer && nextQuestionContainer.classList.contains("question-container")) {
+                    nextQuestionContainer.classList.remove("hidden");
+                }
+            } else {
+                button.style.backgroundColor = "#ff0000"; // Έντονο κόκκινο
+            }
+        }
+    </script>
+</body>
+</html>
